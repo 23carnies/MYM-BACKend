@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const productsCtrl = require('../controllers/api/products');
+const productsCtrl = require('../controllers/products');
 
 // Public Routes
 router.get('/', productsCtrl.index);
