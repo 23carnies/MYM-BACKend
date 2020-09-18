@@ -9,7 +9,7 @@ module.exports = {
   }
 
   async function create(req, res) {
-    req.body.addedBy = req.user._id
+
     const products = await Product.create(req.body)
     .then(product => {res.json(product)})
     .catch(err => {res.json(err)})
