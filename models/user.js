@@ -21,6 +21,8 @@ const userSchema = new mongoose.Schema({
   avatar: String,
   phone: String,
   isSeller: { type: Boolean, required: true, default: false },
+  rating: { type: Number, default: 0, required: true },
+  numReviews: { type: Number, default: 0, required: true },
   reviews: [reviewSchema],
 }, {
   timestamps: true
