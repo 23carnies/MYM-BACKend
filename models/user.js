@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require("bcrypt");
 
+
+
 const SALT_ROUNDS = 6;
 
 const reviewSchema = new mongoose.Schema(
@@ -23,10 +25,7 @@ const userSchema = new mongoose.Schema({
   isSeller: { type: Boolean, required: true, default: false },
   rating: { type: Number, default: 0, required: true },
   numReviews: { type: Number, default: 0, required: true },
-  storePicture: String,
-  storeName: String,
-  storeLocation: String,
-  bio: String,
+  store: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Store' }],
   reviews: [reviewSchema],
 }, {
   timestamps: true
