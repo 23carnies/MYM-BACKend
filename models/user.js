@@ -6,8 +6,8 @@ const SALT_ROUNDS = 6;
 const reviewSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
-    rating: { type: Number, default: 0 },
-    comment: { type: String, required: false },
+    rating: { type: Number, default: 0, max: 5},
+    comment: { type: String, required: false }
   },
   {
     timestamps: true,
