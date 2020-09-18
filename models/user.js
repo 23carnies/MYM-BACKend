@@ -3,11 +3,25 @@ const bcrypt = require("bcrypt");
 
 const SALT_ROUNDS = 6;
 
+const reviewSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    rating: { type: Number, default: 0 },
+    comment: { type: String, required: false },
+  },
+  {
+    timestamps: true,
+  }
+);
+
 const userSchema = new mongoose.Schema({
   name: String,
   email: {type: String, required: true, lowercase: true, unique: true},
   password: String,
+  avatar: String,
+  phone: String,
   isSeller: { type: Boolean, required: true, default: false },
+  reviews: [reviewSchema],
 }, {
   timestamps: true
 });
