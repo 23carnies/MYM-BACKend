@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
   isSeller: { type: Boolean, required: true, default: false },
   rating: { type: Number, default: 0, required: true },
   numReviews: { type: Number, default: 0, required: true },
+  storePicture: String,
+  storeName: String,
+  storeLocation: String,
+  bio: String,
   reviews: [reviewSchema],
 }, {
   timestamps: true
