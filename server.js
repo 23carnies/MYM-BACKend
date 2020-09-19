@@ -10,6 +10,7 @@ const userRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
 const productRouter = require("./routes/products")
 const reviewRouter = require("./routes/reviews")
+const storeRouter = require("./routers/stores")
 
 const cors = require("cors");
 
@@ -23,6 +24,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 app.use("/api/reviews", reviewRouter)
+app.use("/api/stores", storeRouter)
 
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
