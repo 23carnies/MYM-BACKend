@@ -10,7 +10,7 @@ const userRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
 const productRouter = require("./routes/products")
 const reviewRouter = require("./routes/reviews")
-const storeRouter = require("./routers/stores")
+const storeRouter = require("./routes/stores")
 
 const cors = require("cors");
 

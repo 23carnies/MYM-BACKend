@@ -10,29 +10,29 @@ module.exports = {
   }
 
   async function create(req, res) {
-    const stores = await store.create(req.body)
+    const store = await Store.create(req.body)
     .then(store => {res.json(store)})
     .catch(err => {res.json(err)})
   }
 
   async function index(req, res) {
-    const stores = await store.find({})
+    const stores = await Store.find({})
     .then(stores => {res.json(stores)})
     .catch(err => {res.json(err)})
   }
 
   async function show(req,res) {
-		const stores = await store.findById(req.params.id)
+		const stores = await Store.findById(req.params.id)
 		.then(store => {res.json(store)})
         .catch(err => {res.json(err)})
 	}
 
     async function update(req, res) {
-        const updatedstore = await store.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        const updatedstore = await Store.findByIdAndUpdate(req.params.id, req.body, {new: true});
         res.status(200).json(updatedstore);
     }
 
     async function deleteOne(req, res) {
-        const deletedstore = await store.findByIdAndRemove(req.params.id);
+        const deletedstore = await Store.findByIdAndRemove(req.params.id);
         res.status(200).json(deletedstore);
     }
