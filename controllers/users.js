@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Store = require("../models/store")
 
 module.exports = {
   index,

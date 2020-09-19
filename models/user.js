@@ -26,7 +26,7 @@ const userSchema = new Schema({
   isSeller: { type: Boolean, required: true, default: false },
   rating: { type: Number, default: 0, required: true },
   numReviews: { type: Number, default: 0, required: true },
-  store: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Store' }],
+  store: { type: mongoose.Schema.Types.ObjectId, ref: 'Store' },
   reviews: [reviewSchema],
 }, {
   timestamps: true
