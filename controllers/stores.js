@@ -1,4 +1,5 @@
 const Store = require('../models/store')
+const User = require('../models/user')
 
 module.exports = {
     index,
@@ -9,7 +10,6 @@ module.exports = {
   }
 
   async function create(req, res) {
-    req.body.addedBy = req.user._id
     const stores = await store.create(req.body)
     .then(store => {res.json(store)})
     .catch(err => {res.json(err)})
