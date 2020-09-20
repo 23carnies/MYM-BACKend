@@ -1,5 +1,4 @@
 const Store = require('../models/store')
-
 const User = require('../models/user')
 
 module.exports = {
@@ -10,28 +9,16 @@ module.exports = {
     delete: deleteOne
   }
 
-  // async function create(req, res) {
-  //   console.log(req)
-  //   const store = await Store.create(req.body)
-  //   await res.json(store)
-  //   User.findByIdAndUpdate(req.user.id, user.store.push(store.id), {new: true})
-  //   .catch(err => {res.json(err)}) 
-  // }
-
   function create(req, res) {
     const store = Store.create(req.body)
     .then(store => {
       req.user.store.push(store._id)
       User.findByIdAndUpdate(req.user._id, req.user, {new: true})
-      //  req.user.save()
        .then(() => res.status(200))
        .catch(err => res.json(err))     
      })
     .catch(err => {res.json(err)}) 
    }
-
-
-
 
   async function index(req, res) {
     const stores = await Store.find({})
