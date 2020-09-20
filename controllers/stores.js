@@ -10,9 +10,13 @@ module.exports = {
     delete: deleteOne
   }
 
-function create(req, res) {
-  console.log(req)
-}
+  async function create(req, res) {
+    console.log(req)
+    const store = await Store.create(req.body)
+    await res.json(store)
+    User.findByIdAndUpdate(req.user.id, user.store.push(store.id), {new: true})
+    .catch(err => {res.json(err)}) 
+  }
 
   // function create(req, res) {
   //   const store = Store.create(req.body)
