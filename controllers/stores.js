@@ -12,9 +12,9 @@ module.exports = {
 
   async function create(req, res) {
     const store = await Store.create(req.body)
+    .then(store => res.json(store))
     User.findById(req.user.id, function(err,user) {
       user.store.push(store._id)
-      .then(store => res.json(store))
     })
   }
   // async function create(req, res) {
