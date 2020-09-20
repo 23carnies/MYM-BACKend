@@ -10,7 +10,15 @@ module.exports = {
     delete: deleteOne
   }
 
+  async function create(req, res) {
+    const store = await Store.create(req.body)
+    req.user.store.push(store.id)
+    req.user.save()
+    .then(() => res.status(200))
+    .catch(err => {res.json(err)}) 
+  }
 
+  
   // async function create(req, res) {
   //   const store = await Store.create(req.body)
   //   .then(store => res.json(store))
@@ -19,12 +27,12 @@ module.exports = {
   //   })
   // }
 
-  async function create(req, res) {
-    const store = await Store.create(req.body)
-    req.user.store.push(store.id)
-    await res.json(store)
-    .catch(err => {res.json(err)}) 
-  }
+  // async function create(req, res) {
+  //   const store = await Store.create(req.body)
+  //   req.user.store.push(store.id)
+  //   await res.json(store)
+  //   .catch(err => {res.json(err)}) 
+  // }
   // async function create(req, res) {
   //   const store = await Store.create(req.body)
   //   .then(store => {res.json(store)
