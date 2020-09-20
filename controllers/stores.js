@@ -11,9 +11,8 @@ module.exports = {
 
   async function create(req, res) {
     const store = await Store.create(req.body)
-    console.log(store.id)
     .then(store => {res.json(store)})
-    .then(User.findByIdAndUpdate(req.user.id, user.store.push(store.id), {new: true}))
+    .then(() => User.findByIdAndUpdate(req.user.id, user.store.push(store.id), {new: true}))
     console.log('user', req.user.id, 'store', store.id)
     .catch(err => {res.json(err)})
   }
