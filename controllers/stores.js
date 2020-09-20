@@ -21,7 +21,7 @@ module.exports = {
   async function create(req, res) {
     const store = await Store.create(req.body)
     await res.json(store)
-    User.findByIdAndUpdate(req.user.id, user.store.push(store.id), {new: true})
+    User.findByIdAndUpdate(req.user.id, req.body, {new: true})
     .catch(err => {res.json(err)}) 
   }
   // async function create(req, res) {
