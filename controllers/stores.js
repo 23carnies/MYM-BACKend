@@ -10,57 +10,17 @@ module.exports = {
     delete: deleteOne
   }
 
-
-  async function create(req, res) {
-    const store = await Store.create(req.body)
+  function create(req, res) {
+    const store = Store.create(req.body)
     .then(store => {
-       req.user.stores.push(store._id)
+       req.user.store.push(store._id)
        req.user.save()
-       .then(() => res.status(200).json(store))
+       .then(() => res.status(200))
        .catch(err => res.json(err))     
-     }
-    )}
+     })
+    .catch(err => {res.json(err)}) 
+   }
 
-
-  // function create(req, res){
-  //   Store.create(req.body)
-  //   .then(store => {
-  //   req.user.store.push(store._id)
-  //   req.user.save().then(()=> res.json(store)
-  //   )}
-  //   )}
-
-  // async function create(req, res) {
-  //   const store = await Store.create(req.body)
-  //   req.user.store.push(store._id)
-  //   req.user.save()
-  //   .then(() => res.status(200))
-  //   .catch(err => {res.json(err)}) 
-  // }
-
-
-  // async function create(req, res) {
-  //   const store = await Store.create(req.body)
-  //   .then(store => res.json(store))
-  //   User.findById(req.user.id, function(err,user) {
-  //     user.store.push(store._id)
-  //   })
-  // }
-
-  // async function create(req, res) {
-  //   const store = await Store.create(req.body)
-  //   req.user.store.push(store.id)
-  //   await res.json(store)
-  //   .catch(err => {res.json(err)}) 
-  // }
-  // async function create(req, res) {
-  //   const store = await Store.create(req.body)
-  //   .then(store => {res.json(store)
-  //   .then( User.findByIdAndUpdate(req.user.id, user.store.push(store.id), {new: true}))
-  //   console.log('user', req.user.id, 'store', store.id)
-  // })
-  //   .catch(err => {res.json(err)})
-  // }
 
   async function index(req, res) {
     const stores = await Store.find({})
