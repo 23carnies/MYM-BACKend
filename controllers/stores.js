@@ -10,13 +10,21 @@ module.exports = {
     delete: deleteOne
   }
 
-  async function create(req, res) {
-    const store = await Store.create(req.body)
+  function create(req, res){
+    Store.create(req.body)
+    .then(store => {
     req.user.store.push(store._id)
-    req.user.save()
-    .then(() => res.status(200))
-    .catch(err => {res.json(err)}) 
-  }
+    req.user.save().then(()=> res.json(store)
+    )}
+    )}
+
+  // async function create(req, res) {
+  //   const store = await Store.create(req.body)
+  //   req.user.store.push(store._id)
+  //   req.user.save()
+  //   .then(() => res.status(200))
+  //   .catch(err => {res.json(err)}) 
+  // }
 
 
   // async function create(req, res) {
