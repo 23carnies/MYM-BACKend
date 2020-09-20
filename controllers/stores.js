@@ -10,16 +10,20 @@ module.exports = {
     delete: deleteOne
   }
 
-  function create(req, res) {
-    const store = Store.create(req.body)
-    .then(store => {
-       req.user.store.push(store._id)
-       req.user.save()
-       .then(() => res.status(200))
-       .catch(err => res.json(err))     
-     })
-    .catch(err => {res.json(err)}) 
-   }
+function create(req, res) {
+  console.log(req)
+}
+
+  // function create(req, res) {
+  //   const store = Store.create(req.body)
+  //   .then(store => {
+  //      req.user.store.push(store._id)
+  //      req.user.save()
+  //      .then(() => res.status(200))
+  //      .catch(err => res.json(err))     
+  //    })
+  //   .catch(err => {res.json(err)}) 
+  //  }
 
 
   async function index(req, res) {
