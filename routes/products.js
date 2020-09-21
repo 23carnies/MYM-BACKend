@@ -5,7 +5,7 @@ const productsCtrl = require('../controllers/products');
 
 // Protected Routes
 router.use(require('../config/auth'));
-router.get('/', productsCtrl.index);
+router.get('/', checkAuth, productsCtrl.index);
 router.post('/', checkAuth, productsCtrl.create)
 router.get('/:id', checkAuth, productsCtrl.show)
 router.put('/:id', checkAuth, productsCtrl.update);
