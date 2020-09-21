@@ -8,6 +8,7 @@ require("./config/database");
 
 const userRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
+const uploadRouter = require("./routes/upload");
 
 
 const storeRouter = require("./routes/stores")
@@ -22,7 +23,7 @@ app.use(express.static(path.join(__dirname, "build")));
 
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
-
+app.use("/api/upload", uploadRouter);
 
 app.use("/api/stores", storeRouter)
 
