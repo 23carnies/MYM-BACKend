@@ -18,6 +18,7 @@ const storeSchema = new Schema({
     storeName: String,
     storeLocation: String,
     bio: String,
+    createdBy: {type:Schema.Types.ObjectId, ref:'User'}, 
     products: [productSchema]
   }, {
       timestamps: true,
