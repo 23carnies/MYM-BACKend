@@ -10,6 +10,7 @@ module.exports = {
   }
 
   function create(req, res) {
+    req.body.createdBy = req.user._id
     const store = Store.create(req.body)
     .then(store => {
       req.user.store.push(store._id)

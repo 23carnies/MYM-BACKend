@@ -1,19 +1,39 @@
-const Product = require('../models/product')
+const Store = require('../models/store')
 
 module.exports = {
     index,
     create,
     show,
     update,
-    delete: deleteOne
+    delete: deleteOne 
   }
 
-  async function create(req, res) {
-    req.body.addedBy = req.user._id
-    const products = await Product.create(req.body)
-    .then(product => {res.json(product)})
-    .catch(err => {res.json(err)})
-  }
+function create(req, res) {
+  Store.findById(req.user.store, function(err, store) {
+    store.products.push(req.body)
+    store.save()
+      .then(products => {res.json(products)})
+      .catch(err => {res.json(err)})
+  })
+}
+
+
+  //  function create(req,res) {
+  //    const product = product.create(req.body)
+  //    .then(product => {
+  //      req.store.product.push(product)
+  //      Store.findByIdAndUpdate(req.store._id, req.body, {new: true})
+  //      .then(() => res.status(200))
+  //      .catch(err => res.json(err))
+  //    })
+  //    .catch(err => {res.json(err)})
+  //  }
+
+  // async function create(req, res) {
+  //   const products = await Product.create(req.body)
+  //   .then(product => {res.json(product)})
+  //   .catch(err => {res.json(err)})
+  // }
 
   async function index(req, res) {
     const products = await Product.find({})
