@@ -2,10 +2,9 @@ const router = require('express').Router();
 const calendarEventsCtrl = require('../controllers/calendarEvents');
 
 // Public Routes
-
+router.get('/', calendarEventsCtrl.index);
 // Protected Routes
 router.use(require('../config/auth'));
-// router.get('/', checkAuth, calendarEventsCtrl.index);
 router.post('/', checkAuth, calendarEventsCtrl.create)
 // router.get('/:id', checkAuth, calendarEventsCtrl.show)
 
