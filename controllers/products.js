@@ -44,7 +44,7 @@ function create(req, res) {
   }
 
   async function show(req,res) {
-		const products = await Product.findById(req.params.id)
+		const products = await Store.findById(req.params.id)
 		.then(product => {res.json(product)})
     .catch(err => {res.json(err)})
 	}
