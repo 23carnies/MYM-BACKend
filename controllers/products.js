@@ -35,6 +35,7 @@ function create(req, res) {
   //   .catch(err => {res.json(err)})
   // }
 
+  // new comment
   async function index(req, res) {
     const products = await Store.find({})
     .populate('addedBy')
