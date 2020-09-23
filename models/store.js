@@ -12,6 +12,16 @@ const productSchema = new Schema({
       timestamps: true,
   });
 
+  const reviewSchema = new Schema(
+    {
+      name: { type: String, required: true },
+      rating: { type: Number, default: 0, max: 5},
+      comment: { type: String, required: false }
+    },
+    {
+      timestamps: true,
+    }
+  );
 
 const storeSchema = new Schema({
     storePicture: String,
@@ -19,7 +29,9 @@ const storeSchema = new Schema({
     storeLocation: String,
     bio: String,
     createdBy: {type:Schema.Types.ObjectId, ref:'User'}, 
-    products: [productSchema]
+    products: [productSchema],
+    reviews: [reviewSchema]
+
   }, {
       timestamps: true,
   });
