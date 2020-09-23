@@ -9,7 +9,7 @@ module.exports = {
   }
 
 function create(req, res) {
-  Store.findById(req.user.store, function(err, store) {
+  Store.findById(req.params.id, function(err, store) {
     store.products.push(req.body)
     store.save()
       .then(products => {res.json(products)})
@@ -36,7 +36,7 @@ function create(req, res) {
 
   function update(req,res){
     console.log(req.user)
-    Store.findById(req.user.store[0])
+    Store.findById(req.params.storeId)
     .then((store) => {
       let a = store.products.findIndex(p=> p._id.toString()===req.body._id)
       store.products.splice(a, 1, req.body)
