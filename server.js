@@ -14,6 +14,7 @@ const productRouter = require("./routes/products");
 const storeRouter = require("./routes/stores");
 const calendarEventsRouter = require("./routes/calendarEvents")
 const nodemailRouter = require("./routes/nodemail")
+const reviewRouter = require('./routes/reviews')
 
 const cors = require("cors");
 
@@ -28,8 +29,9 @@ app.use("/api/users", userRouter);
 app.use("/api/upload", uploadRouter);
 app.use("/api/products", productRouter);
 app.use("/api/stores", storeRouter);
-app.use("/api/calendarEvents", calendarEventsRouter)
-app.use("/api/nodemail", nodemailRouter)
+app.use("/api/calendarEvents", calendarEventsRouter);
+app.use("/api/nodemail", nodemailRouter);
+app.use("/api/reviews", reviewRouter);
 
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
