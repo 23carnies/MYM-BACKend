@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const logger = require("morgan");
+const nodemailer = require('nodemailer')
 
 require("dotenv").config();
 require("./config/database");
@@ -12,6 +13,7 @@ const uploadRouter = require("./routes/upload");
 const productRouter = require("./routes/products");
 const storeRouter = require("./routes/stores");
 const calendarEventsRouter = require("./routes/calendarEvents")
+const nodemailRouter = require("./routes/nodemail")
 
 const cors = require("cors");
 
@@ -27,6 +29,7 @@ app.use("/api/upload", uploadRouter);
 app.use("/api/products", productRouter);
 app.use("/api/stores", storeRouter);
 app.use("/api/calendarEvents", calendarEventsRouter)
+app.use("/api/nodemail", nodemailRouter)
 
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
