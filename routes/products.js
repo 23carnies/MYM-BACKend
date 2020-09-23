@@ -8,7 +8,7 @@ router.use(require('../config/auth'));
 router.post('/', checkAuth, productsCtrl.create)
 router.get('/:id', checkAuth, productsCtrl.show)
 router.put('/:id', checkAuth, productsCtrl.update);
-router.delete('/:id', checkAuth, productsCtrl.delete);
+router.delete('/:storeId/:productId', checkAuth, productsCtrl.delete);
 
 
 function checkAuth(req, res, next) {
