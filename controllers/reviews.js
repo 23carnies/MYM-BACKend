@@ -1,18 +1,16 @@
-const User = require('../models/user')
+const Store = require('../models/store')
 
 module.exports = {
     create
 }
 
 function create(req, res) {
-    User.findById(req.params.id)
-    .then((user) => {
-        user.reviews.push(req.body)
-        user.save()
-        .then( () => {
-            res.redirect(`/products`)
-        })
+    Store.findById(req.params.id, function(err, store){
+        store.reviews.push(req.body)
+        store.save()
+        .then(reviews => {res.json(reviews) })
+        .catch(err => {res.json(err)})
     })
 }
 
-//check req.params.id with user situation later
+//check req.params.id with store situation later
