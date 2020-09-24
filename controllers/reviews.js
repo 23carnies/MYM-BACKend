@@ -12,5 +12,3 @@ function create(req, res) {
         .catch(err => {res.json(err)})
     })
 }
-
-//check req.params.id with store situation later

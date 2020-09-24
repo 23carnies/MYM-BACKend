@@ -9,16 +9,6 @@ module.exports = {
     delete: deleteOne
   }
 
-  // function create(req, res) {
-  //   Store.findById(req.user.store, function(err, store) {
-  //     store.products.push(req.body)
-  //     store.save()
-  //       .then(products => {res.json(products)})
-  //       .catch(err => {res.json(err)})
-  //   })
-  // }
-  
-
   function create(req, res) {
     req.body.createdBy = req.user._id
     Store.create(req.body)
