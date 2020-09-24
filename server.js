@@ -33,7 +33,7 @@ app.use("/api/calendarEvents", calendarEventsRouter);
 app.use("/api/nodemail", nodemailRouter);
 app.use("/api/reviews", reviewRouter);
 
-app.get("/*", function (req, res) {
+app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
