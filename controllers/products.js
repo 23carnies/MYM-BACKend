@@ -17,10 +17,6 @@ function create(req, res) {
   })
 }
 
-
-
-
-  // new comment
   async function index(req, res) {
     const products = await Store.find({})
     .populate('addedBy')
@@ -45,11 +41,6 @@ function create(req, res) {
       .catch(err => {res.json(err)})
     })
   }
-    
-    // async function deleteOne(req, res) {
-    //     const deletedProduct = await Product.findByIdAndRemove(req.params.id);
-    //     res.status(200).json(deletedProduct);
-    // }
 
   function deleteOne(req,res){
     console.log(req.params)

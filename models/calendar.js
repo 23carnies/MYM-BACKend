@@ -9,6 +9,4 @@ const calendarSchema = new Schema({
       timestamps: true,
   });
 
-
-
   module.exports = mongoose.model('Calendar', calendarSchema)

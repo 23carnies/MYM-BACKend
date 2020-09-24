@@ -2,7 +2,6 @@ const router = require('express').Router();
 const reviewsCtrl = require('../controllers/reviews');
 
 // Public Routes
-// router.get('/', reviewsCtrl.index);
 
 // Protected Routes
 router.use(require('../config/auth'));

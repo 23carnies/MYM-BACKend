@@ -10,7 +10,6 @@ router.get('/:id', checkAuth, productsCtrl.show)
 router.put('/:id/:storeId', checkAuth, productsCtrl.update);
 router.delete('/:storeId/:productId', checkAuth, productsCtrl.delete);
 
-
 function checkAuth(req, res, next) {
   if (req.user) return next();
   return res.status(401).json({msg: 'Not Authorized'});
